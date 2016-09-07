@@ -10,11 +10,11 @@
  *    \___/   diameter_bottom
  */
 
-kCup_diameter_flange = 20;
-kCup_height_flange   = 1;
-kCup_diameter_top    = 18;
-kCup_diameter_bot    = 15;
-kCup_height          = 20;
+kCup_diameter_flange = 49.96;
+kCup_height_flange   = 8.63;
+kCup_diameter_top    = 42.68;
+kCup_diameter_bot    = 36;
+kCup_height          = 43;
 
 
 /*
@@ -26,10 +26,10 @@ kCup_height          = 20;
  /*
   * material constraints
   */
-t2 = .5; //2mm thickness
-mS = 2; //minSolid amount
+t2 = 2; //2mm thickness
+mS = 5; //minSolid amount
 keyL = 10;//key length
-throughAll = 9999;
+throughAll = 2;
 
 module kCup(){
      union(){
@@ -78,6 +78,7 @@ module kCupSlotPane(){
 }
 
 module horizontalPanes(){
+    //@TODO keyholes
     width = 2*kCup_diameter_flange;
     depth = kCup_diameter_flange;
     translate([-width/2, -depth/2+2*t2, 0]){
@@ -131,7 +132,7 @@ module assembly(){
             horizontalPanes();
         }
     }    
-    
+    //locktight
     translate([kCup_diameter_top/2, -kCup_diameter_top/2, 0]){
         kCupSlotPane();
     }
